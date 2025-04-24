@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  backend:
+    image: express-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - APP_URL=http://localhost
+      - PORT=3000
+      - MONGO_URL=mongodb://mongo:27017/mydatabase
+      - NODE_ENV=development
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - express-network
+  mongo:
+    image: mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - express-network
+volumes:
+  mongo-data:
+    driver: local
+networks:
+  express-network:
+    driver: bridge
