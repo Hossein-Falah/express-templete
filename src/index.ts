@@ -50,7 +50,7 @@ export class CreateApplication {
 
             logger.info("🚀 Server is starting...");
             logger.info(`✅ ${runningMode} ${runningOnPort} ${runningSince}`);
-            logger.info(`✅ Server is running on ${config.APP_URL}${this.PORT}`);
+            logger.info(`✅ Server is running on ${config.APP_URL}:${this.PORT}`);
         }).on("error", (error: Error) => {
             logger.error(`❌ Error starting server: ${error.message}`);
         });
