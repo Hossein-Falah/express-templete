@@ -6,6 +6,6 @@ const config = {
     PORT: process.env.PORT || 3000,
     MONGO_URL: process.env.MONGO_URL as string,
     MODE: process.env.NODE_ENV as "development" | "production"
-}
+} as const;
 
 export default config;
